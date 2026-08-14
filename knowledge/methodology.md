@@ -1,178 +1,77 @@
-# Market Research Methodology
+# Market Research Methodology — Reference
 
-## 1. Research is a decision system, not a document
+Compact reference for the market-research skill. The full workflow lives in `SKILL.md`; this file holds the underlying methods and heuristics.
 
-A useful research process reduces uncertainty around a specific decision. Every research activity should answer a decision question or reduce a known uncertainty.
-
-## 2. Evidence taxonomy
-
-### FACT
-Directly supported by a credible source. Example: an official pricing page states a monthly price.
-
-### INFERENCE
-A reasoned conclusion derived from multiple facts. Example: several segments show the same workflow pain, so the pain is likely structural.
-
-### HYPOTHESIS
-A proposition that should be tested. Example: small manufacturers will pay $299/month for an AI sales assistant.
-
-### UNKNOWN
-Evidence is insufficient to make a responsible claim.
-
-## 3. Primary vs secondary research
-
-Secondary research is fast and broad, but can reflect outdated or aggregated assumptions. Primary research is closer to the customer and should be used to validate behavior, urgency, and willingness to pay.
-
-A useful hierarchy is:
+## Research formula
 
 ```text
-Observed purchase / paid pilot
-    > actual behavior / usage
-    > customer interview about recent behavior
-    > customer interview about intention
-    > survey intention
-    > social opinion
-    > LLM simulation
+市场数据(宏观) + 竞争分析(别人怎么赚钱) + 用户访谈(真实痛点) + 付费验证(愿不愿买) = 创业决策
 ```
 
-LLM simulations are brainstorming tools only.
+## Evidence taxonomy
 
-## 4. Market sizing
+| Label | 中文 | Meaning |
+|---|---|---|
+| `FACT` | 确定事实 | Directly supported by a credible, attributable source |
+| `INFERENCE` | 合理推测 | Reasoned from multiple facts |
+| `HYPOTHESIS` | 假设 | A proposition to be tested (incl. all simulated interviews) |
+| `UNKNOWN` | 未知信息 | Insufficient evidence for a responsible claim |
 
-### Bottom-up
+Simulated interviews are brainstorming only — never evidence.
 
-Preferred formula:
+## Evidence strength ladder (weakest → strongest)
 
 ```text
-Number of reachable customers
-× realistic annual price
-× realistic penetration
-= serviceable revenue opportunity
+LLM simulation < social opinion < survey intention < interview about intention
+  < interview about recent behavior < actual behavior/usage < observed purchase / paid pilot
 ```
 
-Document every assumption.
+## Source hierarchy
 
-### TAM / SAM / SOM
+official statistics / government > first-party company pages & pricing & filings > direct customer statements (reviews, forums, interviews) > reputable research orgs > reputable journalism > expert commentary > aggregators > unattributed blogs.
 
-- TAM = theoretical total market
-- SAM = serviceable portion for the defined offering/geography
-- SOM = realistically reachable portion over a defined time horizon
-
-Do not treat TAM as expected revenue.
-
-## 5. Competitor research
-
-A competitor is any alternative that competes for the customer's budget or attention. Include:
-
-- direct products
-- adjacent products
-- internal build
-- service providers
-- manual workflows
-- hiring staff
-- doing nothing
-
-The best competitive question is not “who has the most features?” but “why would this customer change behavior?”
-
-## 6. Customer research
-
-Map five roles:
-
-1. problem owner
-2. user
-3. economic buyer
-4. decision maker
-5. blocker
-
-Look for painful, repeated, measurable problems with an existing budget or obvious economic consequence.
-
-## 7. Pricing research
-
-Stated willingness to pay is weak evidence. Stronger evidence includes:
-
-- current spend
-- switching budget
-- signed pilot
-- paid trial
-- deposit
-- pre-order
-- renewal
-
-Use price sensitivity to construct experiments rather than pretending an exact optimal price is knowable in advance.
-
-## 8. Go-to-market
-
-For each target segment, estimate:
-
-- where prospects can be reached
-- cost to reach them
-- authority of the contact
-- sales cycle
-- trust barrier
-- onboarding effort
-
-A large market with expensive or inaccessible distribution may be worse than a smaller but reachable niche.
-
-## 9. One-person company lens
-
-Score higher when a product has:
-
-- narrow scope
-- low onboarding complexity
-- self-service acquisition
-- low support burden
-- high gross margin
-- low regulatory burden
-- repeatable delivery
-- obvious ROI
-
-Score lower when it requires:
-
-- large sales teams
-- field service
-- high-touch implementation
-- 24/7 operations
-- heavy compliance
-- bespoke enterprise integrations
-
-## 10. Red-team method
-
-For every optimistic conclusion, write the strongest alternative explanation.
-
-Example:
-
-> Evidence: searches for “AI客服” are increasing.
->
-> Counterargument: search volume can rise because of curiosity rather than buying intent.
->
-> Required test: measure qualified demos, pilot conversion, or paid adoption.
-
-## 11. Validation ladder
-
-Use the cheapest credible experiment first:
+## Market sizing (bottom-up)
 
 ```text
-Problem interview
-  -> landing page
-  -> qualified lead
-  -> demo
-  -> concierge MVP
-  -> paid pilot
-  -> repeatable sales
-  -> scalable product
+Number of reachable customers × realistic annual price × realistic penetration = serviceable revenue
 ```
 
-Never build the full product to validate a problem that can be tested manually.
+TAM = theoretical total; SAM = serviceable for the defined offering/geography; SOM = realistically reachable in a time horizon. Never treat TAM as expected revenue.
 
-## 12. Kill criteria
+## Competitor research
 
-A good research project defines stop conditions before results are known.
+A competitor is any alternative competing for the customer's budget or attention: direct products, adjacent products, internal build, service providers, manual workflows, hiring staff, doing nothing.
 
-Examples:
+The key question is not "who has the most features?" but "why would this customer change behavior?".
 
-- fewer than 2 of 20 qualified interviews report the target pain
-- fewer than 10% of qualified prospects request a demo
-- no paid pilot after 30 qualified conversations
-- gross margin below target at realistic delivery cost
-- acquisition channel costs exceed realistic contribution margin
+## Customer research
 
-Thresholds must be adjusted to the business model and documented as hypotheses, not universal laws.
+Map five roles: problem owner, user, economic buyer, decision maker, blocker.
+
+Ask "why is the user suffering now?", not "what do they need?". Target frequent, repeated, measurable pain with an existing budget or obvious economic consequence.
+
+## Willingness to pay (weak → strong)
+
+stated intent < current spend < switching budget < signed pilot < paid trial < deposit < pre-order < renewal.
+
+## Go-to-market
+
+For each segment estimate: where prospects gather, cost to reach, contact authority, sales cycle, trust barrier, onboarding effort. A large but inaccessible market is worse than a smaller reachable niche.
+
+## One-person company lens
+
+Score higher: narrow scope, low onboarding, self-service acquisition, low support, high gross margin, low regulatory burden, repeatable delivery, obvious ROI. Score lower: big sales teams, field service, high-touch implementation, 24/7 ops, heavy compliance, bespoke integrations.
+
+## Red-team method
+
+For every optimistic conclusion, write the strongest alternative explanation and the test that would distinguish them. Watch for: temporary hype, pain already solved, large-but-inaccessible market, incumbents able to copy, buyer without budget authority.
+
+## Validation ladder (cheapest credible experiment first)
+
+```text
+problem interview -> landing page -> qualified lead -> demo -> concierge MVP -> paid pilot -> repeatable sales -> scalable product
+```
+
+## Kill criteria
+
+Define stop conditions before results are known, e.g. fewer than 2 of 20 qualified interviews report the target pain; <10% of qualified prospects request a demo; no paid pilot after 30 conversations; CAC exceeding contribution margin. Adjust thresholds to the business model — they are hypotheses, not universal laws.
