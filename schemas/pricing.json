@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Pricing / Unit Economics",
+  "type": "object",
+  "required": ["segment"],
+  "properties": {
+    "id": {"type": "string"},
+    "segment": {"type": "string"},
+    "price": {"type": "number", "minimum": 0},
+    "currency": {"type": "string"},
+    "price_unit": {"type": "string"},
+    "arpu": {"type": "number", "minimum": 0},
+    "gross_margin": {"type": "number", "minimum": 0, "maximum": 1},
+    "implementation_cost": {"type": "number", "minimum": 0},
+    "support_cost": {"type": "number", "minimum": 0},
+    "sales_cycle_days": {"type": "integer", "minimum": 0},
+    "conversion_rate": {"type": "number", "minimum": 0, "maximum": 1},
+    "cac": {"type": "number", "minimum": 0},
+    "payback_months": {"type": "number", "minimum": 0},
+    "retention_months": {"type": "number", "minimum": 0},
+    "break_even_customers": {"type": "integer", "minimum": 0},
+    "notes": {"type": "string"}
+  }
+}

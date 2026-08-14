@@ -1,0 +1,233 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/schemas/report.json",
+  "title": "Market Research Feasibility Report",
+  "type": "object",
+  "required": ["meta", "project_brief", "decision", "summary", "evidence_ledger", "scorecard", "experiments", "recommendation", "sources"],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["project_name", "generated_at", "mode", "time_window", "geography"],
+      "properties": {
+        "project_name": {"type": "string"},
+        "generated_at": {"type": "string", "format": "date-time"},
+        "mode": {"enum": ["quick", "deep", "validation"]},
+        "time_window": {"type": "string"},
+        "geography": {"type": "string"}
+      }
+    },
+    "project_brief": {
+      "type": "object",
+      "required": ["idea", "target_customer", "geography", "budget", "advantages"],
+      "properties": {
+        "idea": {"type": "string"},
+        "target_customer": {"type": "string"},
+        "geography": {"type": "string"},
+        "budget": {"type": "string"},
+        "advantages": {"type": "string"}
+      }
+    },
+    "decision": {
+      "type": "object",
+      "required": ["recommendation", "score", "confidence", "basis"],
+      "properties": {
+        "recommendation": {"enum": ["GO", "CONDITIONAL GO", "NO-GO"]},
+        "score": {"type": "number", "minimum": 0, "maximum": 10},
+        "confidence": {"enum": ["LOW", "MEDIUM", "HIGH"]},
+        "basis": {"type": "string"}
+      }
+    },
+    "summary": {
+      "type": "object",
+      "required": ["why_could_work", "why_could_fail", "biggest_unknown"],
+      "properties": {
+        "why_could_work": {"type": "string"},
+        "why_could_fail": {"type": "string"},
+        "biggest_unknown": {"type": "string"}
+      }
+    },
+    "market": {
+      "type": "object",
+      "properties": {
+        "definition": {"type": "string"},
+        "tam": {"type": "number"},
+        "sam": {"type": "number"},
+        "som": {"type": "number"},
+        "tam_formula": {"type": "string"},
+        "sam_formula": {"type": "string"},
+        "som_formula": {"type": "string"},
+        "growth": {"type": "string"},
+        "main_players": {"type": "string"},
+        "funding": {"type": "string"}
+      }
+    },
+    "customers": {
+      "type": "object",
+      "properties": {
+        "icp": {"type": "string"},
+        "pain_clusters": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["cluster", "source_id", "confidence"],
+            "properties": {
+              "cluster": {"type": "string"},
+              "evidence": {"type": "string"},
+              "source_id": {"type": "string"},
+              "confidence": {"type": "number", "minimum": 0, "maximum": 1}
+            }
+          }
+        },
+        "current_alternatives": {"type": "string"},
+        "buying_process": {"type": "string"}
+      }
+    },
+    "competition": {
+      "type": "object",
+      "properties": {
+        "competitor_map": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name"],
+            "properties": {
+              "name": {"type": "string"},
+              "customer": {"type": "string"},
+              "price": {"type": "string"},
+              "strengths": {"type": "string"},
+              "weaknesses": {"type": "string"},
+              "threat": {"type": "number", "minimum": 0, "maximum": 1}
+            }
+          }
+        },
+        "substitutes": {"type": "string"},
+        "gap": {"type": "string"}
+      }
+    },
+    "pricing": {
+      "type": "object",
+      "properties": {
+        "plans": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {"type": "string"},
+              "price": {"type": "string"},
+              "includes": {"type": "string"},
+              "segment": {"type": "string"},
+              "conversion_difficulty": {"type": "string"}
+            }
+          }
+        },
+        "which_converts": {"type": "string"},
+        "unit_economics": {"type": "string"},
+        "wtp_evidence": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": {"type": "string"},
+              "source_id": {"type": "string"},
+              "strength": {"enum": ["strong", "medium", "weak"]}
+            }
+          }
+        }
+      }
+    },
+    "channel": {
+      "type": "object",
+      "properties": {
+        "where_prospects_gather": {"type": "string"},
+        "cheapest_channels": {"type": "array", "items": {"type": "string"}},
+        "plan_100d": {"type": "string"}
+      }
+    },
+    "objection": {
+      "type": "object",
+      "properties": {
+        "objections": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "objection": {"type": "string"},
+              "response": {"type": "string"},
+              "resolved": {"type": "boolean"}
+            }
+          }
+        },
+        "key_assumptions_at_risk": {"type": "string"},
+        "evidence_against": {"type": "string"}
+      }
+    },
+    "evidence_ledger": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "type", "claim"],
+        "properties": {
+          "id": {"type": "string"},
+          "type": {"enum": ["FACT", "INFERENCE", "HYPOTHESIS", "UNKNOWN"]},
+          "claim": {"type": "string"},
+          "source_id": {"type": "string"},
+          "confidence": {"type": "number", "minimum": 0, "maximum": 1}
+        }
+      }
+    },
+    "scorecard": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["dimension", "score", "weight"],
+        "properties": {
+          "dimension": {"type": "string"},
+          "score": {"type": "number", "minimum": 0, "maximum": 10},
+          "weight": {"type": "number"},
+          "effective": {"type": "number"},
+          "rationale": {"type": "string"}
+        }
+      }
+    },
+    "experiments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "hypothesis", "metric", "threshold", "kill_criteria"],
+        "properties": {
+          "name": {"type": "string"},
+          "hypothesis": {"type": "string"},
+          "metric": {"type": "string"},
+          "threshold": {"type": "string"},
+          "deadline": {"type": "string"},
+          "kill_criteria": {"type": "string"},
+          "status": {"enum": ["planned", "running", "completed", "killed"]}
+        }
+      }
+    },
+    "recommendation": {
+      "type": "object",
+      "required": ["next", "avoid", "smallest_test"],
+      "properties": {
+        "next": {"type": "string"},
+        "avoid": {"type": "string"},
+        "smallest_test": {"type": "string"}
+      }
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "url"],
+        "properties": {
+          "id": {"type": "string"},
+          "title": {"type": "string"},
+          "url": {"type": "string", "format": "uri"},
+          "source_type": {"type": "string"},
+          "date": {"type": "string"},
+          "credibility": {"type": "number", "minimum": 0, "maximum": 1}
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"Market Research Project",
+  "type":"object",
+  "required":["name","slug","mode","decision"],
+  "properties":{
+    "name":{"type":"string"},"slug":{"type":"string"},
+    "mode":{"enum":["quick","deep","validation"]},
+    "geography":{"type":"string"},"target_segment":{"type":"string"},
+    "budget":{"type":"string"},"founder_advantages":{"type":"string"},
+    "decision":{"type":"string"},"created_at":{"type":"string"},
+    "weights":{"type":"object","additionalProperties":{"type":"number","minimum":0,"maximum":1}}
+  },
+  "additionalProperties":true
+}

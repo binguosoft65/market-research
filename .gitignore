@@ -1,0 +1,20 @@
+# Runtime project data (created by scripts/init.py)
+projects/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+
+# Build / packaging artifacts
+dist/
+*.zip
+*.tar.gz
+
+# Editor / OS
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
