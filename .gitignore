@@ -8,9 +8,9 @@ __pycache__/
 .venv/
 venv/
 
-# Build / packaging artifacts
-dist/
-*.zip
+# Build / packaging artifacts — the release zip is tracked intentionally
+dist/*
+!dist/*.zip
 *.tar.gz
 
 # Editor / OS
